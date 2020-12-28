@@ -1,4 +1,7 @@
-const express = require('express');
+// const express = require('express'); lo cambiamos por el import
+// Con babel podemos utilizar los imports y exports de javascript
+
+import express from "express"
 
 const app = express();
 
