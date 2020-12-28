@@ -1,0 +1,7 @@
+Curso Restapi Fazt
+Comandos para node y npm:
+
+npm init -y 
+npm install express 
+npm i @babel/core @babel/cli @babel/node @babel/preset-env -D
+npm i nodemon -D
