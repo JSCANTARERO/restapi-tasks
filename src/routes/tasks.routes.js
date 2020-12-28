@@ -1,17 +1,21 @@
 import {Router} from "express";
-import Task from '../models/Task' //Importamos el modelo de datos
+
+import * as TaskController from "../controllers/task.controller"; 
+//El asterisco es para importar todas las funciones
 
 const router = Router();
 
-router.get('/', async (req,res) => { // La '/' hace referencia a /api/tasks/
-    const tasks = await Task.find()
-    res.json(tasks)
-})
+// La '/' hace referencia a /api/tasks/
+// Mostrar todas las tareas
+router.get('/', TaskController.findAllTasks);
 
-router.post('/', async (req,res) => { 
-    const newTask = new Task({ title: req.body.title, description: req.body.description });
-    await newTask.save();
-    res.json(newTask)
-})
+//Crear una nueva tarea
+router.post('/', TaskController.createTask);
+
+//Buscar una tarea por id
+router.get('/:id', TaskController.findOneTask);
+
+//Eliminar una tarear
+router.delete('/:id', TaskController.deleteTask);
 
 export default router;
