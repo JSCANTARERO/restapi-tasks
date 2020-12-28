@@ -12,9 +12,13 @@ import TasksRoutes from "./routes/tasks.routes";
 
 const app = express();
 
+// Settings
 app.set('port', process.env.PORT || 3000); 
 // Utilizamos process.env.PORT para que si en caso de que el puerto este ocupado que este lo tome
 
+app.use(express.json());
+
+// Routes
 app.get('/', (req,res) => {
     res.json({message: 'Welcome to my application'})
 });

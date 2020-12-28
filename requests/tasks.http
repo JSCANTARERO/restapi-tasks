@@ -1,1 +1,11 @@
-GET http://localhost:3000
+###
+GET http://localhost:3000/api/tasks
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+    "title": "Hacer un sitio web en react",
+    "description": "Trabajo de empresa"
+}
