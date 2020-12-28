@@ -5,3 +5,5 @@ npm init -y
 npm install express 
 npm i @babel/core @babel/cli @babel/node @babel/preset-env -D
 npm i nodemon -D
+npm i mongoose
+npm i dotenv
