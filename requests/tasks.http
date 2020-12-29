@@ -6,12 +6,24 @@ POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 {
-    "title": "Hacer un sitio web en angular",
-    "description": "Trabajo freelance"
+    "title": "Hacer un sitio web en Laravel",
+    "description": "Trabajo freelance",
+    "done": true
 }
 
 ###
 GET http://localhost:3000/api/tasks/5fea58ea8ce823333159a405
 
 ###
-DELETE http://localhost:3000/api/tasks/5fea5bc425c41936feffdda5
+DELETE http://localhost:3000/api/tasks/5fea65ab2bd1fc4770730dd7
+
+###
+GET http://localhost:3000/api/tasks/done
+
+###
+PUT http://localhost:3000/api/tasks/5fea5b0913c2a5353bbbce78
+Content-Type: application/json
+
+{
+    "title": "Crear un sitio web en Wix"
+}

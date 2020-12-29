@@ -7,3 +7,4 @@ npm i @babel/core @babel/cli @babel/node @babel/preset-env -D
 npm i nodemon -D
 npm i mongoose
 npm i dotenv
+npm i morgan
