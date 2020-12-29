@@ -10,6 +10,7 @@ import express from "express";
 
 import TasksRoutes from "./routes/tasks.routes";
 import morgan from 'morgan'; //Middleware
+import cors from 'cors';
 
 const app = express();
 
@@ -18,9 +19,11 @@ app.set('port', process.env.PORT || 3000);
 // Utilizamos process.env.PORT para que si en caso de que el puerto este ocupado que este lo tome
 
 //Middlewares
+app.use(cors()) //con esto cualquier aplicacion puede hacer solicitudes
 app.use(express.json());
-
 app.use(morgan('dev'));
+app.use(express.urlencoded({extended: false})); //Con esto el servidor podra entender las petiociones
+// que vayan llegando desde formularios HTML
 
 // Routes
 app.get('/', (req, res) => {
