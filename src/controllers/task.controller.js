@@ -2,6 +2,7 @@ import {
     request
 } from 'express'
 import Task from '../models/Task' //Importamos el modelo de datos
+const ObjectID = require('mongodb').ObjectID;
 
 // Mostrar todas las tareas
 export const findAllTasks = async (req, res) => {
@@ -53,15 +54,15 @@ export const findOneTask = async (req, res) => {
         id
     } = req.params;
 
-    const _id = id;
-    const task = await Task.findById({_id}); 
+    const _id = new ObjectID(id);
+    const task = await Task.findOne({_id});
 
     if (!task)
-        return res.status(500).json({
+        return res.status(404).json({
             message: `Task with id ${id} does not exist`
         });
 
-    res.json(task);
+    res.status(200).json(task);
 };
 
 // El params son los parametros que le enviamos extra en la ruta (:id)
