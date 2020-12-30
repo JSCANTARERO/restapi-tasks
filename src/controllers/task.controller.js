@@ -53,15 +53,18 @@ export const findOneTask = async (req, res) => {
         id
     } = req.params;
 
-    const task = await Task.findById(id); // El params son los parametros que le enviamos extra en la ruta (:id)
+    const _id = id;
+    const task = await Task.findById({_id}); 
 
     if (!task)
-        return res.status(404).json({
+        return res.status(500).json({
             message: `Task with id ${id} does not exist`
         });
 
-    res.json(task)
+    res.json(task);
 };
+
+// El params son los parametros que le enviamos extra en la ruta (:id)
 
 //Eliminar una tarea
 export const deleteTask = async (req, res) => {
