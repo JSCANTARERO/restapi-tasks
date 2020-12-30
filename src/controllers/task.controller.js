@@ -50,29 +50,44 @@ export const findAllDoneTask = async (req, res) => {
 
 //Buscar una tarea por id
 export const findOneTask = async (req, res) => {
-    const {
-        id
-    } = req.params;
-
-    const _id = new ObjectID(id);
-    const task = await Task.findOne({_id});
-
-    if (!task)
-        return res.status(404).json({
-            message: `Task with id ${id} does not exist`
+    try {
+        const {
+            id
+        } = req.params;
+    
+        const _id = new ObjectID(id);
+        const task = await Task.findOne({
+            _id
         });
-
-    res.status(200).json(task);
+    
+        if (!task)
+            return res.status(404).json({
+                message: `Task with id ${id} does not exist`
+            });
+    
+        res.status(200).json(task);
+    } catch (error) {
+        res.status(500).json({
+            message: error.message || `Error retrieving Task with id , ${id}`,
+        });
+    }
 };
 
 // El params son los parametros que le enviamos extra en la ruta (:id)
 
 //Eliminar una tarea
 export const deleteTask = async (req, res) => {
-    const data = await Task.findByIdAndDelete(req.params.id)
+    const {id} = req.params;
+    try {
+        const data = await Task.findByIdAndDelete(id)
     res.json({
         message: `'${data.title}' Task were deleted successfully`
     });
+    } catch (error) {
+        res.status(500).json({
+            message: `Error deleting Task with id ${id}`,
+        });
+    }
 }
 
 export const uptTask = async (req, res) => {
