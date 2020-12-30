@@ -10,3 +10,4 @@ npm i dotenv
 npm i morgan
 npm i cors (Cuando se tiene otra aplicacion web puede haber un conflicto a la hora de conectarse entre ellos,
 para esto se utiliza el modulo cors para que otro servidor pueda hacer peticiones a nmuestra API)
+npm i mongoose-paginate-v2
