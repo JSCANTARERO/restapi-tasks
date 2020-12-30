@@ -2,11 +2,14 @@
 GET http://localhost:3000/api/tasks
 
 ###
+GET http://localhost:3000/api/tasks?page=0&size=4
+
+###
 POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 {
-    "title": "Hacer un sitio web en Laravel",
+    "title": "Hacer un sitio web con nativescript",
     "description": "Trabajo freelance",
     "done": true
 }

@@ -1,4 +1,5 @@
 import {Schema, model} from 'mongoose'
+import mongoosePaginate from 'mongoose-paginate-v2';
 // Utilizamos solo los modulos Schema y model que seran los que utilizaremos en lugar de todos los modulos
 
 const taskSchema = new Schema({
@@ -21,6 +22,7 @@ const taskSchema = new Schema({
     timestamps: true //agrega propiedades createdAt y updatedAt
 });
 
+taskSchema.plugin(mongoosePaginate);
 export default model('Task',taskSchema) 
 //el model es para que cuando llamemos la funcion esta nos decuelva un
 // objeto con metodos ya para guardar, editar o eliminar
